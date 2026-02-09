@@ -1,7 +1,7 @@
 //A capitalize function that takes a string and returns it with the first character capitalized.
-import { capitalize } from "./index.js";
+import { capitalize,reverse } from "./index.js";
 
-describe("capitalize", () => {
+describe("Capitalize", () => {
   it("First character should be capitalized", () => {
     let testCases = [
       { input: "helloworld", output: "Helloworld" },
@@ -13,3 +13,16 @@ describe("capitalize", () => {
     });
   });
 });
+
+describe("Reverse string",()=>{
+
+it("String should be reversed",()=>{
+
+    expect(reverse("hello")).toBe('olleh')
+    expect(reverse("kanye")).toBe("eynak")
+
+})
+
+})
+
+
