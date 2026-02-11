@@ -23,13 +23,12 @@ function caesorCipher(string, shift) {
   //starts from 97 ends at 122
   let result = [];
   let charCode;
-  const regex = /\W/;
-
+  const regex = /[^a-z]/i;
   for (let i = 0; i < string.length; i++) {
+    charCode = string.charCodeAt(i) + shift;
     if (regex.test(string[i])) {
       result.push(string[i]);
     } else {
-      charCode = string.charCodeAt(i) + shift;
       if (charCode > 122) result.push(wrappingEndAlphabets(string[i], shift));
       else result.push(String.fromCharCode(charCode));
     }
@@ -37,6 +36,8 @@ function caesorCipher(string, shift) {
 
   return result.join("");
 }
+
+console.log(caesorCipher("A1_", 1));
 
 function wrappingEndAlphabets(character, shift) {
   /*we get the characters code and add shift till 122, the remaining value of shift is then added
@@ -61,8 +62,6 @@ function analyzeArray(array) {
     length: array.length,
   };
 }
-
-console.log(analyzeArray([1, 10, 3, 4, 7, 9, 0]));
 
 export {
   capitalize,

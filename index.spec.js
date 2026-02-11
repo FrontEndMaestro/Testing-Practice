@@ -71,7 +71,7 @@ describe("Calculator", () => {
   it("multiply should be a method", () => {
     expect(typeof calculator.multiply).toBe("function");
   });
-  it("multiply two numbers", () => {
+  it("should multiply two numbers", () => {
     expect(calculator.multiply(2, 4)).toBe(8);
     expect(calculator.multiply(5, 1.78)).toBe(8.9);
   });
@@ -114,14 +114,14 @@ describe("Analyze Array", () => {
     expect(typeof analyzeArray([1, 8, 3, 4, 2, 6])).toBe("object");
   });
 
-  it("return an object with properties avg,min,max and length for an array of numbers", () => {
+  it("it shoud return an object with properties avg,min,max and length for an array of numbers", () => {
     expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
       average: 4,
       min: 1,
       max: 8,
       length: 6,
     });
-    expect(analyzeArray([1, 10, 3, 4, 7, 9,0])).toEqual({
+    expect(analyzeArray([1, 10, 3, 4, 7, 9, 0])).toEqual({
       average: 5,
       min: 0,
       max: 10,
