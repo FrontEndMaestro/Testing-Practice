@@ -21,18 +21,15 @@ let calculator = {
 
 function caesorCipher(string, shift) {
   //starts from 97 ends at 122
-  if (string == "Hello, World!") {
-    return "Khoor, Zruog!";
-  }
   let result = [];
   let charCode;
   const regex = /\W/;
 
   for (let i = 0; i < string.length; i++) {
-    charCode = string.charCodeAt(i) + shift;
     if (regex.test(string[i])) {
       result.push(string[i]);
     } else {
+      charCode = string.charCodeAt(i) + shift;
       if (charCode > 122) result.push(wrappingEndAlphabets(string[i], shift));
       else result.push(String.fromCharCode(charCode));
     }
@@ -48,9 +45,30 @@ function wrappingEndAlphabets(character, shift) {
   return String.fromCharCode(96 + (shift - difference));
 }
 
-function analyzeArray(){
-
-  return {}
+function analyzeArray(array) {
+  let max = 0;
+  let min = 100;
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+    if (array[i] > max) max = array[i];
+    if (array[i] < min) min = array[i];
+  }
+  return {
+    average: Math.ceil(sum / array.length),
+    min,
+    max,
+    length: array.length,
+  };
 }
 
-export { capitalize, reverse, calculator, caesorCipher, wrappingEndAlphabets,analyzeArray};
+console.log(analyzeArray([1, 10, 3, 4, 7, 9, 0]));
+
+export {
+  capitalize,
+  reverse,
+  calculator,
+  caesorCipher,
+  wrappingEndAlphabets,
+  analyzeArray,
+};

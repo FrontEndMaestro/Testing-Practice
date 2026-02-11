@@ -5,7 +5,7 @@ import {
   calculator,
   caesorCipher,
   wrappingEndAlphabets,
-  analyzeArray
+  analyzeArray,
 } from "./index.js";
 
 describe("Capitalize", () => {
@@ -106,11 +106,26 @@ describe("Analyze Array", () => {
     expect(analyzeArray).toBeDefined();
   });
 
-  it("should be a function",()=>{
-    expect(typeof analyzeArray).toBe("function")
-  })
+  it("should be a function", () => {
+    expect(typeof analyzeArray).toBe("function");
+  });
 
-  it("should return an object",()=>{
-    expect(typeof analyzeArray()).toBe("object")
-  })
+  it("should return an object", () => {
+    expect(typeof analyzeArray([1, 8, 3, 4, 2, 6])).toBe("object");
+  });
+
+  it("return an object with properties avg,min,max and length for an array of numbers", () => {
+    expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
+      average: 4,
+      min: 1,
+      max: 8,
+      length: 6,
+    });
+    expect(analyzeArray([1, 10, 3, 4, 7, 9,0])).toEqual({
+      average: 5,
+      min: 0,
+      max: 10,
+      length: 7,
+    });
+  });
 });
