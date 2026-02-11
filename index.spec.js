@@ -1,5 +1,12 @@
 //A capitalize function that takes a string and returns it with the first character capitalized.
-import { capitalize, reverse, calculator } from "./index.js";
+import {
+  capitalize,
+  reverse,
+  calculator,
+  caesorCipher,
+  wrappingEndAlphabets,
+  analyzeArray
+} from "./index.js";
 
 describe("Capitalize", () => {
   it("First character should be capitalized", () => {
@@ -64,8 +71,46 @@ describe("Calculator", () => {
   it("multiply should be a method", () => {
     expect(typeof calculator.multiply).toBe("function");
   });
-  it("multiply two numbers",()=>{
-    expect(calculator.multiply(2,4)).toBe(8)
-    expect(calculator.multiply(5,1.78)).toBe(8.9)
+  it("multiply two numbers", () => {
+    expect(calculator.multiply(2, 4)).toBe(8);
+    expect(calculator.multiply(5, 1.78)).toBe(8.9);
+  });
+});
+
+describe("Caesor Cipher", () => {
+  it("should exist", () => {
+    expect(caesorCipher).toBeDefined();
+  });
+  it("should be a function", () => {
+    expect(typeof caesorCipher).toBe("function");
+  });
+
+  it("should shift characters by 3", () => {
+    expect(caesorCipher("xyz", 3)).toBe("abc");
+    expect(caesorCipher("abc", 3)).toBe("def");
+  });
+
+  it("should wrap from z to a", () => {
+    expect(wrappingEndAlphabets("z", 3)).toBe("c");
+    expect(wrappingEndAlphabets("x", 3)).toBe("a");
+  });
+
+  it("should follow the original lettercase", () => {
+    expect(caesorCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+    expect(caesorCipher("HeLLo", 3)).toBe("KhOOr");
+  });
+});
+
+describe("Analyze Array", () => {
+  it("should exist", () => {
+    expect(analyzeArray).toBeDefined();
+  });
+
+  it("should be a function",()=>{
+    expect(typeof analyzeArray).toBe("function")
+  })
+
+  it("should return an object",()=>{
+    expect(typeof analyzeArray()).toBe("object")
   })
 });
